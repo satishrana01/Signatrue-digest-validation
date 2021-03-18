@@ -10,6 +10,7 @@ Run ```mvn clean install -DskipTests=true``` to build project without running an
 ## Prerequisites
 
 1. Set jdk 11 as java version on your local machine before compile the project.
+2. Postman client
 
 ## Steps to Run 
 
