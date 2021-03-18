@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "61d79c1d-4585-4592-872e-3f665c1da0ca",
+		"name": "Demo-Signature-Digest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Account Information",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": [
+						{
+							"key": "algorithm",
+							"value": "MD5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Signature",
+						"value": "U2lnbmF0dXJlIGtleUlkPSJwYXZEZW1vIixjcmVhdGVkPTE2MTYwNTMxNjEsYWxnb3JpdGhtPSJobWFjLXNoYTI1NiIsaGVhZGVycz0iKHJlcXVlc3QtdGFyZ2V0KSBkYXRlIHJlcXVlc3RpZCBiYW5raWQiLHNpZ25hdHVyZT0ibklDYzBiNVJPdHdISzl4YTQ3bzJCMTBEUHVsUWlaaG5YZ1FoV0NCOGE3OD0i",
+						"type": "text"
+					},
+					{
+						"key": "RequestId",
+						"value": "f1ce806e-57aa-4050-83ff-e370dfa",
+						"type": "text"
+					},
+					{
+						"key": "BankID",
+						"value": "4201",
+						"type": "text"
+					},
+					{
+						"key": "created",
+						"value": "Thu, 18 Mar 2021 13:09:21 IST",
+						"type": "text"
+					},
+					{
+						"key": "Digest",
+						"value": "SHA-256=SQAd53MMBs/Kbn7dvU9n2Pqp0D8b/FO4g/dUVDj+/Oo=",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/getAccountinfo/123456",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getAccountinfo",
+						"123456"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account Information with Diges",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Signature",
+						"value": "U2lnbmF0dXJlIGtleUlkPSJwYXZEZW1vIixjcmVhdGVkPTE2MTYwNTEzMzcsYWxnb3JpdGhtPSJobWFjLXNoYTI1NiIsaGVhZGVycz0iKHJlcXVlc3QtdGFyZ2V0KSBkYXRlIHJlcXVlc3RpZCBiYW5raWQiLHNpZ25hdHVyZT0iT1hFSHhnL3ZyNDVFenFmc1VCUnJPSWsrTWxrbUxJaHZCMjF2U3diSThjTT0i",
+						"type": "text"
+					},
+					{
+						"key": "RequestId",
+						"value": "f1ce806e-57aa-4050-83ff-e370dfa",
+						"type": "text"
+					},
+					{
+						"key": "BankID",
+						"value": "4201",
+						"type": "text"
+					},
+					{
+						"key": "created",
+						"value": "Thu, 18 Mar 2021 12:38:57 IST",
+						"type": "text"
+					},
+					{
+						"key": "digest",
+						"value": "SHA-256=SQAd53MMBs/Kbn7dvU9n2Pqp0D8b/FO4g/dUVDj+/Oo=",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountNo\": \"123456\",\r\n    \"accountName\": \"Satish Kumar\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/getAccountinfo/123456",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getAccountinfo",
+						"123456"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Signature",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Signature",
+						"value": "1234",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "RequestId",
+						"value": "f1ce806e-57aa-4050-83ff-e370dfa",
+						"type": "text"
+					},
+					{
+						"key": "BankID",
+						"value": "4201",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/getSignature?uri=/getAccountinfo/123456",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getSignature"
+					],
+					"query": [
+						{
+							"key": "uri",
+							"value": "/getAccountinfo/123456"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get digest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Signature",
+						"value": "1234",
+						"type": "text"
+					},
+					{
+						"key": "RequestId",
+						"value": "ABCD-URIRI",
+						"type": "text"
+					},
+					{
+						"key": "BankID",
+						"value": "4201",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountNo\": \"123456\",\r\n    \"accountName\": \"Satish Kumar\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/getDigest",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getDigest"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
